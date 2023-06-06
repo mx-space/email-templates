@@ -9,4 +9,4 @@ This is repo includes email templates for mx-core.
 
 ## Preview
 
-<mx-emails.vercel.app>
+[mx-emails.vercel.app](mx-emails.vercel.app)
