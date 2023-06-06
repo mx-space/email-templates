@@ -21,7 +21,9 @@ const readFile = util.promisify(fs.readFile)
 const writeFile = util.promisify(fs.writeFile)
 
 const outDir = './out'
-
+fs.mkdirSync('./ejs', {
+  recursive: true,
+})
 readdir(outDir)
   .then((files) => {
     files.forEach((file) => {
@@ -30,9 +32,12 @@ readdir(outDir)
         readFile(filePath, 'utf-8')
           .then((data) => {
             const restoredHtml = restoreEjsTags(data)
-            return writeFile(filePath, restoredHtml)
+            return writeFile(
+              './ejs/' + path.basename(file, 'html') + 'ejs',
+              restoredHtml,
+            )
           })
-          .then(() => console.log(`File ${file} has been updated.`))
+          .then(() => console.log(`File ${file} has been written.`))
           .catch((err) => console.error(err))
       }
     })
