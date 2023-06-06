@@ -32,9 +32,13 @@ readdir(outDir)
         readFile(filePath, 'utf-8')
           .then((data) => {
             const restoredHtml = restoreEjsTags(data)
+            const writtenPath = './ejs/' + path.basename(file, 'html') + 'ejs'
+
             return writeFile(
-              './ejs/' + path.basename(file, 'html') + 'ejs',
-              restoredHtml,
+              writtenPath,
+              format(restoredHtml, {
+                parser: 'html',
+              })
             )
           })
           .then(() => console.log(`File ${file} has been written.`))
@@ -43,3 +47,5 @@ readdir(outDir)
     })
   })
   .catch((err) => console.error(err))
+
+const { format } = require('prettier')
