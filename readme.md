@@ -1,27 +1,11 @@
-# React Email Starter
+# Mix Space Email Templates
 
-A live preview right in your browser so you don't need to keep sending real emails during development.
 
-## Getting Started
+This is repo includes email templates for mx-core. 
 
-First, install the dependencies:
+- Comment Email (Guest and Owner)
+- Subscribe Notification Email
 
-```sh
-npm install
-# or
-yarn
-```
 
-Then, run the development server:
+## Preview
 
-```sh
-npm run dev
-# or
-yarn dev
-```
-
-Open [localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## License
-
-MIT License
