@@ -15,14 +15,13 @@ import {
 import { get } from 'lodash-es'
 import * as React from 'react'
 import { baseRenderProps } from '../data/comment'
+import { ejsMode, ejsSegment } from '../utils'
 
 const getEjsValue = (key: string) =>
-  process.env.NODE_ENV !== 'development'
-    ? `<%= ${key} %>`
-    : get(baseRenderProps, key)
+  ejsMode ? `<%= ${key} %>` : get(baseRenderProps, key)
 export const GuestReceivedEmailTemplate = () => {
   const previewText = `${getEjsValue('master')} 在「${getEjsValue(
-    'title',
+    'title'
   )}」给你回复啦！ ${getEjsValue('master')} 回复说： ${getEjsValue('text')}`
   return (
     <Html>
@@ -59,6 +58,18 @@ export const GuestReceivedEmailTemplate = () => {
                 {getEjsValue('text')}
               </Text>
             </Section>
+
+            {ejsSegment('<% if(aggregate.parent?.text){ %>')}
+            <Text className="text-black text-[14px] leading-[24px]">
+              你之前的回复是：
+            </Text>
+            <Section className="bg-gray-100 rounded-xl px-4">
+              <Text className="text-[#333] text-[12px] leading-[24px]">
+                {getEjsValue('aggregate.parent.text')}
+              </Text>
+            </Section>
+            {ejsSegment('<% } %>')}
+
             <Section className="text-center mt-[32px] mb-[32px]">
               <Button
                 pX={20}

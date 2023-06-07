@@ -15,14 +15,13 @@ import {
 import { get } from 'lodash-es'
 import * as React from 'react'
 import { baseRenderProps } from '../data/comment'
+import { ejsMode, ejsSegment } from '../utils'
 
 const getEjsValue = (key: string) =>
-  process.env.NODE_ENV !== 'development'
-    ? `<%= ${key} %>`
-    : get(baseRenderProps, key)
+  ejsMode ? `<%= ${key} %>` : get(baseRenderProps, key)
 export const OwnerReceivedEmailTemplate = () => {
   const previewText = `${getEjsValue('author')} 在《${getEjsValue(
-    'title',
+    'title'
   )}》说：${getEjsValue('text')}`
   // const commentorAvatar = getEjsValue('aggregate.comment.avatar')
   return (
@@ -52,6 +51,7 @@ export const OwnerReceivedEmailTemplate = () => {
             <Heading className="text-black text-[18px] font-normal text-center p-0 my-[30px] mx-0">
               『<strong>{getEjsValue('title')}</strong>』 的评论收到了回复
             </Heading>
+
             <Text className="text-black text-[14px] leading-[24px]">
               <strong>{getEjsValue('author')}</strong> 的回复：
             </Text>
@@ -60,6 +60,17 @@ export const OwnerReceivedEmailTemplate = () => {
                 {getEjsValue('text')}
               </Text>
             </Section>
+
+            {ejsSegment('<% if(aggregate.parent?.text){ %>')}
+            <Text className="text-black text-[14px] leading-[24px]">
+              原评论：
+            </Text>
+            <Section className="bg-gray-100 rounded-xl px-4">
+              <Text className="text-[#333] text-[12px] leading-[24px]">
+                {getEjsValue('aggregate.parent.text')}
+              </Text>
+            </Section>
+            {ejsSegment('<% } %>')}
 
             <Text className="text-black text-[14px] leading-[24px]">
               其他信息：

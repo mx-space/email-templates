@@ -7,6 +7,7 @@ const ejsTagsMap = {
   '&lt;%-': '<%-',
   '%&gt;': '%>',
 }
+const { format } = require('prettier')
 
 function restoreEjsTags(htmlStr) {
   for (let key in ejsTagsMap) {
@@ -32,7 +33,8 @@ readdir(outDir)
         readFile(filePath, 'utf-8')
           .then((data) => {
             const restoredHtml = restoreEjsTags(data)
-            const writtenPath = './ejs/' + path.basename(file, 'html') + 'ejs'
+            const writtenPath =
+              './ejs/' + path.basename(file, 'html') + 'template.ejs'
 
             return writeFile(
               writtenPath,
@@ -41,11 +43,8 @@ readdir(outDir)
               })
             )
           })
-          .then(() => console.log(`File ${file} has been written.`))
           .catch((err) => console.error(err))
       }
     })
   })
   .catch((err) => console.error(err))
-
-const { format } = require('prettier')

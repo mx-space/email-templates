@@ -15,6 +15,7 @@ import {
 } from '@react-email/components'
 import { get } from 'lodash-es'
 import React from 'react'
+import { ejsMode } from '../utils'
 
 const defaultPostProps = {
   text: '年纪在四十以上，二十以下的，恐怕就不易在前两派里有个地位了。他们的车破，又不敢“拉晚儿”，所以只能早早的出车，希望能从清晨转到午后三四点钟，拉出“车份儿”和自己的嚼谷①。他们的车破，跑得慢，所以得多走路，少要钱。到瓜市，果市，菜市，去拉货物，都是他们；钱少，可是无须快跑呢。',
@@ -47,9 +48,7 @@ export const defaultSubscribeForRenderProps = {
 }
 
 const getEjsValue = (key: string) =>
-  process.env.NODE_ENV !== 'development'
-    ? `<%= ${key} %>`
-    : get(defaultSubscribeForRenderProps, key)
+  ejsMode ? `<%= ${key} %>` : get(defaultSubscribeForRenderProps, key)
 
 export default () => (
   <Html>

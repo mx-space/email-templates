@@ -16,9 +16,7 @@ const defaultCommentModelForRenderProps: CommentModelRenderProps = {
   avatar:
     'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/976.jpg' as string,
   mail: 'commtor@example.com' as string,
-  text: `Tenetur ipsam quis illo eos pariatur. Minima rerum accusantium. Nesciunt facere illo reprehenderit qui voluptatem omnis temporibus consequatur similique. Et quidem vero aperiam iure cumque perspiciatis. Vitae occaecati quam non. Placeat officia iste voluptatibus magnam neque accusamus magni alias at.
-  Nobis quia enim error molestiae praesentium molestias. Itaque harum cupiditate itaque ea necessitatibus deleniti. Excepturi nihil voluptas vel vitae asperiores eveniet illum. Soluta veritatis quasi commodi. Enim laudantium quaerat recusandae nulla placeat.
-  Ad recusandae et sint impedit at esse illo exercitationem. Odit repellat non. Quisquam asperiores eveniet dolore. Magni iste modi at delectus. Pariatur consequuntur officia ab libero. Beatae voluptatum quia impedit deleniti ipsam eaque iure.` as string,
+  text: '世界！' as string,
   ip: '0.0.0.0' as string | undefined,
   agent:
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36' as string,
@@ -38,19 +36,25 @@ const defaultPostModelForRenderProps = {
 
 export const baseRenderProps = Object.freeze({
   author: defaultCommentModelForRenderProps.author,
-  link: 'https://innei.ren/note/122#comments-37ccbeec9c15bb0ddc51ca7d' as string,
-
   mail: defaultCommentModelForRenderProps.mail,
   text: defaultCommentModelForRenderProps.text,
-  title: '文章的标题' as string,
-  time: dayjs().format('YYYY/MM/DD'),
-  master: 'Innei' as string,
-
   ip: defaultCommentModelForRenderProps.ip,
+  link: 'https://innei.ren/note/122#comments-37ccbeec9c15bb0ddc51ca7d' as string,
+
+  time: dayjs().format('YYYY/MM/DD'),
+  title: defaultPostModelForRenderProps.title,
+  master: 'innei' as string,
 
   aggregate: {
     post: defaultPostModelForRenderProps,
     commentor: defaultCommentModelForRenderProps,
+    parent: {
+      author: 'Responder',
+      avatar:
+        'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/187.jpg',
+      mail: 'responser@innei.ren',
+      text: '你好，',
+    },
     owner: {
       username: 'innei',
       avatar: 'https://avatars.githubusercontent.com/u/41265413?v=4',
