@@ -54,7 +54,7 @@ export default () => (
   <Html>
     <Head />
     <Preview>
-      你关注的 @{getEjsValue('aggregate.owner')} 有新的内容发布啦。
+      你关注的 @{getEjsValue('aggregate.owner.name')} 有新的内容发布啦。
       {`<%= aggregate.post.text.slice(0, 20) %>`}
     </Preview>
     <Tailwind>
