@@ -28,8 +28,8 @@ export const GuestReceivedEmailTemplate = () => {
       <Head />
       <Preview>{previewText}</Preview>
       <Tailwind>
-        <Body className="bg-white my-auto mx-auto font-sans">
-          <Container className="border border-solid shadow-md rounded my-[40px] mx-auto p-[20px] w-[550px] border-sky-500 relative overflow-hidden">
+        <Body className="bg-white my-auto mx-auto font-sans p-2">
+          <Container className="border border-solid shadow-md rounded my-[40px] mx-auto p-[20px] w-[550px] max-w-full border-sky-500 relative overflow-hidden">
             <Section className="absolute inset-0 pointer-events-none">
               <Img
                 src="https://fastly.jsdelivr.net/gh/mx-space/docs-images@master/images/chichi-1.jpeg"
