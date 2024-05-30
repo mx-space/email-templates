@@ -44,8 +44,8 @@ export const OwnerReceivedEmailTemplate = () => {
             <Section className="mt-[32px]">
               <Img
                 // src={getEjsValue('aggregate.owner.avatar')}
-                src="https://mx-space.js.org/logo.png"
-                className="my-0 mx-auto rounded-xl h-12 w-12"
+                src="https://cdn.jsdelivr.net/gh/mx-space/.github@main/uwu.png"
+                className="my-0 mx-auto rounded-xl h-12"
               />
             </Section>
             <Heading className="text-black text-[18px] font-normal text-center p-0 my-[30px] mx-0">
