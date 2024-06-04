@@ -97,7 +97,7 @@ export default () => (
             </Button>
 
             <Link
-              className="text-gray-400 float-right text-[12px] translate-y-3"
+              className="text-gray-400 absolute right-0 text-[12px] top-3"
               href={getEjsValue('unsubscribe_link')}
             >
               退订
